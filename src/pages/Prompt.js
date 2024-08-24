@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import { useNavigate } from "react-router-dom";
-import * as React from 'react';
+import React from 'react';
 
 export default function Prompt() {
     const navigate = useNavigate();
@@ -14,57 +14,126 @@ export default function Prompt() {
     const submitInput = async (input) => {
         if (input.length === 0) {
             alert("Please write something!");
+            return;
         }
 
         localStorage.setItem("story", undefined);
         localStorage.setItem("imageUrls", undefined);
 
-        navigate("/story", {state: {story: input}})
+        navigate("/story", { state: { story: input } });
     }
 
     return (
-        <div>
-            <Box sx={{ py: '5%', px: '3%', bgcolor: 'primary.main'}}>
-            <Grid container spacing={2}>
-                <Grid item xs={3}>
-                    <img className="owl-prompt" src="https://media.giphy.com/media/0JWCkLbDhCQiajoqJo/giphy.gif" alt="owl"/>
+        <Box sx={{
+            py: { xs: '10%', sm: '5%' },
+            px: { xs: '5%', sm: '3%' },
+            bgcolor: 'primary.light',
+            minHeight: '100vh',
+            overflowY: 'auto', // Ensures the content is scrollable
+            display: 'flex',
+            justifyContent: 'center'
+        }}>
+            <Grid container spacing={3} sx={{
+                maxWidth: '1200px',
+                bgcolor: 'background.paper',
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                p: { xs: 2, sm: 3 }
+            }}>
+                <Grid item xs={12} sm={4} sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: 'secondary.light',
+                    py: { xs: 2, sm: 3 }
+                }}>
+                    <img
+                        src="https://media.giphy.com/media/0JWCkLbDhCQiajoqJo/giphy.gif"
+                        alt="Owl"
+                        style={{
+                            maxWidth: '100%',
+                            height: 'auto',
+                            borderRadius: '16px',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                        }}
+                    />
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={12} sm={8} sx={{
+                    p: { xs: 2, sm: 4 },
+                }}>
                     <Button
-                        variant="round"
-                        size="medium"
-                        sx = {{mb: 2}}
-                        onClick={() => {navigate("../");}} >
-                        <ArrowBackIosNewOutlinedIcon/>
+                        variant="contained"
+                        size="small"
+                        sx={{
+                            mb: 2,
+                            bgcolor: 'secondary.main',
+                            color: 'primary.contrastText',
+                            borderRadius: '50%',
+                            p: 1,
+                            minWidth: 0,
+                            '&:hover': {
+                                bgcolor: 'secondary.dark'
+                            }
+                        }}
+                        onClick={() => navigate("../")}
+                    >
+                        <ArrowBackIosNewOutlinedIcon sx={{ fontSize: '1.2rem' }} />
                     </Button>
 
-                    
-
                     <TextField
-                        id="filled-multiline-flexible"
-                        label="Write a story about ..."
+                        id="story-input"
+                        label="Story of ..."
                         InputLabelProps={{
-                            style: { fontSize: '1.5em', fontFamily: "'M PLUS Rounded 1c', sans-serif" }
+                            style: { fontSize: '1.25rem', fontFamily: "'Baloo 2', cursive" }
                         }}
                         multiline
                         variant="filled"
-                        rows={15}
-                        sx={{width: '100%', '& .MuiInputBase-input': {mt:'0.75em', fontSize: '1.5em', fontFamily: "'M PLUS Rounded 1c', sans-serif"}, bgcolor: 'secondary.main', color: 'primary.main'}}
+                        rows={10}
+                        sx={{
+                            width: '100%',
+                            '& .MuiInputBase-input': {
+                                mt: '0.5em',
+                                fontSize: '1.25rem',
+                                fontFamily: "'M PLUS Rounded 1c', sans-serif",
+                                color: 'text.primary'
+                            },
+                            bgcolor: 'secondary.light',
+                            borderRadius: 2,
+                            p: 1
+                        }}
                         onChange={(e) => setInputText(e.target.value)}
                     />
 
-                    <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end',  }}>
+                    <Box sx={{
+                        mt: 3,
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                    }}>
                         <Button
-                            variant="round"
-                            size="medium"
-                            onClick={() => submitInput(inputText)} >
-                            Create
+                            variant="contained"
+                            size="large"
+                            sx={{
+                                fontFamily: "'M PLUS Rounded 1c', sans-serif",
+                                fontWeight: 700,
+                                borderRadius: 4,
+                                bgcolor: "secondary.main",
+                                color: 'primary.contrastText',
+                                px: { xs: 3, sm: 4 },
+                                py: 1.5,
+                                fontSize: "1rem",
+                                boxShadow: '0 9px 12px -3px rgba(0, 0, 0, 0.1)',
+                                '&:hover': {
+                                    bgcolor: 'secondary.dark'
+                                }
+                            }}
+                            onClick={() => submitInput(inputText)}
+                        >
+                            Create Story
                         </Button>
                     </Box>
                 </Grid>
             </Grid>
-                
-            </Box>
-        </div>
+        </Box>
     )
 }
