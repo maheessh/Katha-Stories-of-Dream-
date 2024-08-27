@@ -49,7 +49,7 @@ export default function Prompt() {
                     py: { xs: 2, sm: 3 }
                 }}>
                     <img
-                        src="https://media.giphy.com/media/0JWCkLbDhCQiajoqJo/giphy.gif"
+                        src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGIzNGw1ajk1MjNxbDMzZ3cydThmdWR6ODVlbngzOTFyZ3Fnb20xdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lolUjSv7K7Jktw8kX7/giphy.gif"
                         alt="Owl"
                         style={{
                             maxWidth: '100%',
