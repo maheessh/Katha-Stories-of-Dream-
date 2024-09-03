@@ -23,16 +23,21 @@ To set up the project locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-project-name.git
+   git clone https://github.com/maheessh/Katha-Stories-of-Dream-.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd your-project-name
+   cd Katha-Stories-of-Dream 
+   ```
+   or
+   
+     ```bash
+   cd /to/the/path 
    ```
 
-3. Install the dependencies:
+4. Install the dependencies:
 
    ```bash
    npm install
